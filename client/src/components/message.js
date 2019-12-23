@@ -8,7 +8,7 @@ class Message extends React.Component{
     render() {
         return <li className={(this.isConnected ? (this.props.message.userLogin == this.props.myLogin ? 'myMessage ' : 'notMyMessage ') : 'connected') }>
             <p>
-                {this.isConnected ? <span>{this.props.myLogin}:<br/></span> : null}
+                {this.isConnected ? <span>{this.props.message.userLogin}:<br/></span> : null}
                 {this.props.message.messageValue}
             </p>
             </li>

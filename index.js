@@ -64,5 +64,5 @@ app.post('/api/register', (req, res) => {
 })
 
 http.listen( PORT, () => {
-    console.log('app run on port 3000')
+    console.log(`app run on port ${PORT}`)
 });
