@@ -14,11 +14,13 @@ let messageArray = [],
         })
     }
 
-
+app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(cookieParser());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 app.get('/s', function (req, res) {
     //res.send('GET request to the homepageTEST');
-    res.sendFile(path.resolve(`${__dirname}/client/build/test.html`));
+    res.render(`client/build/test.html`);
 });
 
 app.get('/chats', (req,res) => {
