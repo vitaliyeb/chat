@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #6e66a0;
+        }
+        body > form{
+            max-width: 300px;
+            max-height: 200px;
+            border: 1px solid #000;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        body > form > input {
+            background-color: #ffffff00;
+            padding: 6px 10px;
+            outline: none;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            border: 1px solid #000;
+        }
+        body > form > input::placeholder{
+            color: #000;
+        }
+        body > form > button{
+            outline: none;
+            cursor: pointer;
+            background-color: #ffffff00;
+            border: 1px solid #000;
+            border-radius: 30px;
+            padding: 6px 0;
+        }
+    </style>
+</head>
+<body>
+<form id="register" action="">
+    <input type="text" placeholder="your login" name="login">
+    <button>reg</button>
+</form>
+<script>
+    const registerForm = document.querySelector('#register');
+
+    registerForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        let userDataForm = new FormData(registerForm),
+            userDataReq = JSON.stringify({
+                login: userDataForm.get('login')
+            })
+
+        fetch('/api/register', {
+            method: 'POST',
+            body: userDataReq
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.userCreate){
+                    location = '/chats';
+                } else {
+                    alert('пользователь существует')
+                }
+            })
+    })
+</script>
+</body>
+</html>
