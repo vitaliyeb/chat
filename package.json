@@ -1,0 +1,20 @@
+{
+  "name": "chats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm run start --prefix client",
+    "server": "node index.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\"",
+    "start": "node index.js"
+  },
+  "author": "vitaliyeb",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.2",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
