@@ -4,6 +4,7 @@ const http = require( 'http' ).createServer(app);
 const io = require('socket.io')(http);
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 let messageArray = [],
     allUsers = [],
@@ -68,6 +69,6 @@ app.post('/api/register', (req, res) => {
 
 })
 
-http.listen( 3000, () => {
+http.listen( PORT, () => {
     console.log('app run on port 3000')
 });
