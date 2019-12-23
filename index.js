@@ -14,10 +14,7 @@ let messageArray = [],
         })
     }
 
-app.use(express.static('client/build', {redirect: false, index: ''}), (req, res, next)=>{
-    res.send('GET request to the homepageTESTSEND');
-    next();
-});
+app.use(express.static('client/build', {redirect: false, index: ''}));
 app.use(cookieParser());
 
 app.get('/s', function (req, res) {
