@@ -14,12 +14,11 @@ let messageArray = [],
         })
     }
 
-app.use(express.static('client/build', {redirect: false, index: ''}));
-app.use(cookieParser());
 
+app.use(cookieParser());
 app.get('/s', function (req, res) {
     //res.send('GET request to the homepageTEST');
-    res.sendFile(path.resolve(__dirname, 'test.html'));
+    res.sendFile(path.resolve(`${__dirname}/client/build/test.html`));
 });
 
 app.get('/chats', (req,res) => {
