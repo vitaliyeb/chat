@@ -10,6 +10,7 @@ class App extends React.Component{
         this.sendMessage = this.sendMessage.bind(this);
         this.change = this.change.bind(this);
         this.myLogin = '';
+        this.messageList = React.createRef();
         this.state = {
             loading: true,
             inputValue: '',
@@ -22,7 +23,7 @@ class App extends React.Component{
         messages = this.state.loading ? <Loading /> : this.state.arrMessage.map((item, index) => <Message key={index} message={item}  myLogin={this.myLogin} /> );
 
         return <div>
-            <ul>
+            <ul ref={this.messageList}>
                 {messages}
             </ul>
             <form onSubmit={this.sendMessage} action="">
@@ -49,7 +50,8 @@ class App extends React.Component{
         this.setState({loading: false, arrMessage: JSON.parse(arrayMessage)})
     }
     lastMessage(message){
-        this.setState({arrMessage: this.state.arrMessage.concat(message)})
+        this.setState({arrMessage: this.state.arrMessage.concat(message)});
+        this.messageList.current.scrollTo(0, this.messageList.current.scrollHeight);
     }
     sendMessage(e){
         e.preventDefault();
