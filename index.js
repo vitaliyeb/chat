@@ -43,6 +43,8 @@ app.get('/open', (req,res) => {
 });
 
 app.get('/test', (req,res) => {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Headers', "*");
     res.jsonp({ userCreate: true, testing: "message" });
 });
 
