@@ -25,6 +25,7 @@ app.get('/chats', (req,res) => {
     }
 });
 io.on('connection', function(socket){
+    io.emit('test', JSON.stringify({ userCreate: true, testing: "message" }));
     socket.on('open user', function(msg){
         messageArray.push({messageValue: `${msg} connected`, typeMessage: 'connected'});
         io.emit('firstMessageRender', JSON.stringify(messageArray));
@@ -40,12 +41,6 @@ app.get('/open', (req,res) => {
     } else {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'login.html'));
     }
-});
-
-app.get('/test', (req,res) => {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Headers', "*");
-    res.jsonp({ userCreate: true, testing: "message" });
 });
 
 app.post('/api/register', (req, res) => {

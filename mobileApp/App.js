@@ -1,5 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
+
 import {
   View,
   Text,
@@ -8,7 +9,10 @@ import {
 class App extends React.Component{
     constructor(){
         super();
-        this.test = fetch('http://localhost:5000/test').then((res)=> res).then(res=>console.log('test!!!!!!!!!!!!!',res));
+        this.socket = io('https://fierce-beyond-69381.herokuapp.com/');
+        this.v = socket.on('test', (msg)=>{
+            console.log(msg);
+        });
         console.log('asasdshi!!');
     }
 
