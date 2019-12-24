@@ -42,6 +42,9 @@ app.get('/open', (req,res) => {
     }
 });
 
+app.get('/test', (req,res) => {
+    res.jsonp({ userCreate: true, testing: "message" });
+});
 
 app.post('/api/register', (req, res) => {
     let data ='';
