@@ -24,8 +24,8 @@ app.get('/chats', (req,res) => {
         res.redirect('/open');
     }
 });
+
 io.on('connection', function(socket){
-    io.emit('test', JSON.stringify({ userCreate: true, testing: "message" }));
     socket.on('open user', function(msg){
         messageArray.push({messageValue: `${msg} connected`, typeMessage: 'connected'});
         io.emit('firstMessageRender', JSON.stringify(messageArray));
@@ -57,7 +57,7 @@ app.post('/api/register', (req, res) => {
         } else{
             allUsers.push({login: user.login});
             res.cookie('login', user.login);
-            res.jsonp({ userCreate: true });
+            res.jsonp({ userCreate: true});
         }
     })
 
